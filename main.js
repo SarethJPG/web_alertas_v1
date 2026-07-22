@@ -169,3 +169,36 @@ dots.forEach((dot, index) => {
         }
     });
 });
+
+// ==========================================
+// SECCIÓN: ANIMACIONES AL HACER SCROLL (INTERSECTION OBSERVER)
+// ==========================================
+
+// 1. Seleccionamos todos los elementos que tienen la clase de animación inicial
+const fadeUpElements = document.querySelectorAll('.animate-fade-up');
+
+// 2. Configuramos las opciones del observador
+const observerOptions = {
+    root: null, // null significa que usará la ventana del navegador (viewport)
+    rootMargin: '0px', // Sin márgenes extra
+    threshold: 0.2 // Se activará cuando el 20% del elemento sea visible en pantalla
+};
+
+// 3. Creamos el observador
+const fadeObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        // Comprobamos si el elemento ya cruzó el umbral para ser visible
+        if (entry.isIntersecting) {
+            // Agregamos la clase '.visible' que cambia la opacidad y posición en CSS
+            entry.target.classList.add('visible');
+            
+            // Dejamos de observarlo para que la animación se ejecute una sola vez
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// 4. Le indicamos al observador que comience a vigilar cada elemento de la matriz
+fadeUpElements.forEach(element => {
+    fadeObserver.observe(element);
+});

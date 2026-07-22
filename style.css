@@ -10,7 +10,7 @@
 body {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     overflow-x: hidden;
-    padding-top: 121px; 
+    padding-top: 135px; 
 }
 
 /* ==========================================
@@ -35,7 +35,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem 3rem; 
+    /* Aumentamos el padding lateral de 3rem a 5rem para separar los 3 objetos de las orillas */
+    padding: 1.2rem 9rem; 
     max-width: 1920px;
     margin: 0 auto;
 }
@@ -44,7 +45,7 @@ body {
    ELEMENTOS DE LA NAVBAR
    ========================================== */
 .nav-logo img {
-    height: 82px; 
+    height: 97px; 
     width: auto;
     display: block;
 }
@@ -52,9 +53,13 @@ body {
 .nav-title {
     color: white;
     text-align: center;
-    font-size: 1.6rem; 
+    /* Reducimos el tamaño de la fuente original (ej. de 1.6rem a 1.35rem) */
+    font-size: 1rem; 
     flex: 1;
-    padding: 0 3rem;
+    /* Aumentamos la separación lateral respecto al logo y las pestañas a 4rem */
+    padding: 0 4rem;
+    /* Obligamos al texto a mantenerse siempre en una sola línea */
+    white-space: nowrap; 
 }
 
 .nav-links {
@@ -333,6 +338,101 @@ body {
 }
 
 /* ==========================================
+   SECCIÓN 2: CARACTERÍSTICAS / PRIORIDADES
+   ========================================== */
+.features-section {
+    background-color: #ffffff;
+    /* Márgenes superior e inferior amplios para centrar verticalmente */
+    padding: 8rem 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.features-container {
+    /* El uso de Grid crea una matriz/tabla perfecta */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 6rem; 
+    /* Aumentamos el ancho máximo permitido para estirar los 3 grupos */
+    max-width: 1760px; 
+    margin: 0 auto;
+    /* Reducimos significativamente los márgenes laterales para ganar espacio horizontal */
+    padding: 0 1rem; 
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Contenedor de la imagen para asegurar que todos los iconos midan y ocupen lo mismo */
+.feature-icon-wrapper {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px; 
+}
+
+.feature-icon {
+    width: auto;
+    height: 100%;
+    max-height: 80px; /* Fuerza a las 3 imágenes a tener el mismo tamaño máximo */
+}
+
+/* Contenedor de los títulos (Alineación con el truco de la línea oculta) */
+.feature-title-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.feature-title {
+    color: #eb1c24;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase; /* Fuerza las letras a MAYÚSCULAS */
+    line-height: 1.3;
+}
+
+.feature-title.hidden-line {
+    visibility: hidden; /* Oculta la segunda línea pero mantiene el espacio vertical */
+}
+
+/* Párrafos alineados a la línea base del Grupo 2 */
+.feature-text {
+    color: #000000;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* ==========================================
+   ANIMACIONES: FADE-UP ESCALONADO
+   ========================================== */
+.animate-fade-up {
+    opacity: 0;
+    transform: translateY(50px); /* Inicia desplazado hacia abajo */
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Clase que activaremos con JavaScript al hacer scroll */
+.animate-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Retrasos para crear el efecto escalonado (1, 2, 3) */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.5s; }
+
+/* ==========================================
    RESPONSIVIDAD (TABLETS Y MÓVILES)
    ========================================== */
 .mobile-menu-btn {
@@ -352,7 +452,8 @@ body {
 }
 
 @media (max-width: 1366px) {
-    .nav-title { font-size: 1.35rem; }
+    /* Reducimos aún más la letra en laptops para que la única línea quepa perfectamente */
+    .nav-title { font-size: 1.15rem; }
     .nav-links { gap: 2.25rem; }
     
     .hero-content-left {
@@ -363,6 +464,13 @@ body {
 }
 
 @media (max-width: 768px) {
+    body { padding-top: 110px; }
+    .nav-logo img { height: 75px; }
+
+    .nav-container{
+        padding: 1.2rem 1.5rem;
+    }
+
     .nav-title { display: none; }
     .mobile-menu-btn { display: flex; }
 
@@ -495,6 +603,20 @@ body {
         width: 45px; 
         height: 45px; 
         font-size: 1.2rem; 
+    }
+
+    /* ==========================================
+       SECCIÓN CARACTERÍSTICAS (MÓVIL)
+       ========================================== */
+    .features-section {
+        padding: 5rem 0; /* Margen superior e inferior reducido en móvil */
+    }
+
+    .features-container {
+        /* Convierte la matriz a una sola columna (uno debajo de otro) */
+        grid-template-columns: 1fr; 
+        gap: 4rem; /* Misma distancia vertical entre cada grupo */
+        padding: 0 2rem; /* Margen lateral menor que el superior/inferior */
     }
 
     

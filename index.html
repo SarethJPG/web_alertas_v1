@@ -1,40 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Metadatos esenciales y responsividad -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alertas Sísmicas – Venta e instalación de Alertas Sísmicas</title>
     
-    <!-- Enlace al archivo CSS global -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ==========================================
-         SECCIÓN: BARRA DE NAVEGACIÓN (NAVBAR)
-         ========================================== -->
     <header class="navbar" id="navbar">
         <div class="nav-container">
             
-            <!-- 1. Logo (Izquierda) -->
             <a href="#" class="nav-logo">
                 <img src="imgs/logo.png" alt="Logo Alertas Sísmicas">
             </a>
 
-            <!-- 2. Título Central -->
             <div class="nav-title">
                 <p>Sistemas de Alerta Sísmica y Servicios de Protección Civil SA de CV.</p>
             </div>
 
-            <!-- Botón de menú para móviles (Hamburguesa) -->
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menú">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </button>
 
-            <!-- 3. Enlaces / Pestañas (Derecha) -->
             <nav class="nav-links" id="nav-links">
                 <a href="#inicio" class="nav-item">Inicio</a>
                 <a href="#equipos" class="nav-item">Equipos</a>
@@ -43,32 +34,19 @@
 
         </div>
     </header>
-    <!-- ================= FIN NAVBAR ================= -->
-
-    <!-- Aquí irá el resto del contenido del sitio (Main, Secciones, Footer) -->
     <main>
-        <!-- ==========================================
-            SECCIÓN: INICIO (CARRUSEL HERO)
-            ========================================== -->
         <section id="inicio" class="hero-carousel">
 
-            <!-- Pista principal que contiene las 5 Cards -->
             <div class="carousel-inner" id="carousel-inner">
 
-                <!-- ================= CARD 1 (Activa) ================= -->
                 <div class="carousel-slide active" style="background-image: url('imgs/banner-1.jpg');">
 
-                    <!-- Capa 2: Elemento 5 (Círculo rojo pegado a la derecha) -->
-                    <!-- Lo colocamos al nivel de la slide para anclarlo fácilmente al borde derecho -->
                     <img src="imgs/circulo_banner.svg" alt="Fondo decorativo" class="hero-circle-bg">
 
-                    <!-- Contenedor central (limita el ancho y alinea Elemento 3 y 4) -->
                     <div class="hero-container">
 
-                        <!-- Elemento 3: Contenedor Izquierdo (Textos y Botón) -->
                         <div class="hero-content-left">
 
-                            <!-- Elemento 1: Título y Párrafo -->
                             <div class="hero-text-group">
     
                                 <h1 class="animate-title title-line-1">Cotiza tu proyecto con</h1>
@@ -80,23 +58,19 @@
                                 </p>
                             </div>
 
-                            <!-- Elemento 2: Botón (Desplazado ligeramente a la derecha) -->
                             <div class="hero-btn-container">
                                 <a href="#cotiza" class="btn-primary">Cotiza aquí</a>
                             </div>
 
                         </div>
 
-                        <!-- Elemento 4: Contenedor Derecho (Imágenes) -->
                         <div class="hero-content-right">
-                            <!-- Elemento 6: Imagen SARMEX -->
                             <img src="imgs/SARMEX-11.png" alt="Equipo SARMEX 11" class="hero-sarmex-img">
                         </div>
 
                     </div>
                 </div>
 
-                <!-- ================= CARDS 2 a 5 (Vacías temporalmente) ================= -->
                 <div class="carousel-slide" style="background-image: url('imgs/banner-1.jpg');"></div>
                 <div class="carousel-slide" style="background-image: url('imgs/banner-1.jpg');"></div>
                 <div class="carousel-slide" style="background-image: url('imgs/banner-1.jpg');"></div>
@@ -104,19 +78,13 @@
 
             </div>
 
-            <!-- ================= CONTROLES DEL CARRUSEL ================= -->
-
-            <!-- Flechas de navegación -->
             <button class="carousel-control prev" id="btn-prev" aria-label="Slide anterior">
-                <!-- Icono de flecha izquierda -->
                 <span>&#10094;</span>
             </button>
             <button class="carousel-control next" id="btn-next" aria-label="Slide siguiente">
-                <!-- Icono de flecha derecha -->
                 <span>&#10095;</span>
             </button>
 
-            <!-- Puntos indicadores (Dots) -->
             <div class="carousel-indicators">
                 <span class="dot active" data-index="0"></span>
                 <span class="dot" data-index="1"></span>
@@ -126,10 +94,68 @@
             </div>
 
         </section>
-    <!-- ================= FIN CARRUSEL HERO ================= -->
-    </main>
+        <section id="caracteristicas" class="features-section">
+            
+            <div class="features-container">
+                
+                <div class="feature-item animate-fade-up delay-1">
+                    
+                    <div class="feature-icon-wrapper">
+                        <img src="imgs/icono_1.svg" alt="Icono Nuestra Prioridad" class="feature-icon">
+                    </div>
+                    
+                    <div class="feature-title-group">
+                        <h3 class="feature-title">NUESTRA PRIORIDAD</h3>
+                        <h3 class="feature-title hidden-line">&nbsp;</h3>
+                    </div>
+                    
+                    <p class="feature-text">
+                        Alertar a un mayor número de<br>
+                        personas ante un evento sísmico<br>
+                        y poder evitar pérdidas humanas.
+                    </p>
+                </div>
 
-    <!-- Enlace al archivo JS principal -->
+                <div class="feature-item animate-fade-up delay-2">
+                    
+                    <div class="feature-icon-wrapper">
+                        <img src="imgs/icono_2.svg" alt="Icono Sistemas de Alerta" class="feature-icon">
+                    </div>
+                    
+                    <div class="feature-title-group">
+                        <h3 class="feature-title">NUESTROS SISTEMAS</h3>
+                        <h3 class="feature-title">DE ALERTA SÍSMICA</h3>
+                    </div>
+                    
+                    <p class="feature-text">
+                        Recibe la señal oficial del<br>
+                        Gobierno CDMX. Mediante<br>
+                        receptores de Radiofrecuencia.
+                    </p>
+                </div>
+
+                <div class="feature-item animate-fade-up delay-3">
+                    
+                    <div class="feature-icon-wrapper">
+                        <img src="imgs/icono_3.svg" alt="Icono Acreditación Oficial" class="feature-icon">
+                    </div>
+                    
+                    <div class="feature-title-group">
+                        <h3 class="feature-title">ACREDITACIÓN OFICIAL</h3>
+                        <h3 class="feature-title hidden-line">&nbsp;</h3>
+                    </div>
+                    
+                    <p class="feature-text">
+                        Norma Técnica: NT-SGIRPC-ERAS-001-2019 y SIS-<br>
+                        TEMA MÚLTIPLE DE ALERTAS TEMPRANAS Y<br>
+                        EMERGENCIAS DEL ESTADO DE MEXICO 2020
+                    </p>
+                </div>
+
+            </div>
+        </section>
+        </main>
+
     <script src="main.js"></script>
 </body>
 </html>
