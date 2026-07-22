@@ -8,9 +8,9 @@
 }
 
 body {
-    /* Fuente sans-serif limpia y moderna por defecto */
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    overflow-x: hidden; /* Evita scroll horizontal indeseado */
+    overflow-x: hidden;
+    padding-top: 121px; 
 }
 
 /* ==========================================
@@ -23,84 +23,67 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
-    
-    /* Animación de entrada (Slide in) al cargar la página */
     animation: slideInDown 0.8s ease-out forwards;
-    
-    /* Transición suave para cuando JS oculte/muestre la barra al hacer scroll */
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.4s ease-out;
 }
 
-/* Esta clase se añadirá mediante JS cuando el usuario baje en la página */
 .navbar.hidden-scroll {
-    transform: translateY(-100%);
+    transform: translateY(-100%) !important;
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 2rem;
-    max-width: 1920px; /* Escalabilidad para monitores muy grandes */
+    padding: 1.2rem 3rem; 
+    max-width: 1920px;
     margin: 0 auto;
 }
 
 /* ==========================================
-   ELEMENTOS DE LA NAVBAR (IZQ, CENTRO, DER)
+   ELEMENTOS DE LA NAVBAR
    ========================================== */
-/* 1. Logo */
 .nav-logo img {
-    height: 55px; /* Ajusta este valor si tu logo es más grande o pequeño */
+    height: 82px; 
     width: auto;
     display: block;
 }
 
-/* 2. Título Central */
 .nav-title {
     color: white;
     text-align: center;
-    font-size: 1.05rem;
-    flex: 1; /* Permite que el título tome el espacio disponible en el centro */
-    padding: 0 2rem;
+    font-size: 1.6rem; 
+    flex: 1;
+    padding: 0 3rem;
 }
 
-/* 3. Pestañas / Enlaces */
 .nav-links {
     display: flex;
-    gap: 3rem; /* Misma distancia entre las 3 pestañas */
+    gap: 4.5rem; 
     align-items: center;
 }
 
 .nav-item {
     color: white;
     text-decoration: none;
-    font-size: 1.05rem;
+    font-size: 1.6rem; 
     position: relative;
-    /* Transición para el efecto de flotar (hover) */
     transition: transform 0.3s ease; 
 }
 
-/* ==========================================
-   EFECTOS HOVER (PESTAÑAS)
-   ========================================== */
 .nav-item:hover {
-    /* Flotar 5px hacia arriba */
-    transform: translateY(-5px);
-    /* Bold casi imperceptible sin afectar el layout (sin empujar otros textos) */
-    text-shadow: 0 0 0.8px white;
+    transform: translateY(-7px);
+    text-shadow: 0 0 1px white;
 }
 
-/* Línea inferior de las pestañas */
 .nav-item::after {
     content: '';
     position: absolute;
-    bottom: -6px; /* Distancia entre el texto y la línea */
+    bottom: -8px;
     left: 0;
     width: 100%;
-    height: 1.5px; /* Línea delgada */
+    height: 2px;
     background-color: white;
-    
-    /* Configuración para la animación del centro a los lados */
     transform: scaleX(0);
     transform-origin: center; 
     transition: transform 0.3s ease;
@@ -110,59 +93,279 @@ body {
     transform: scaleX(1);
 }
 
-/* ==========================================
-   ANIMACIÓN DE ENTRADA (KEYFRAMES)
-   ========================================== */
 @keyframes slideInDown {
-    from {
-        transform: translateY(-100%);
-    }
-    to {
-        transform: translateY(0);
-    }
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+/* ==========================================
+   SECCIÓN: HERO CARRUSEL (ESTILOS BASE)
+   ========================================== */
+.hero-carousel {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 121px); 
+    min-height: 600px;
+    overflow: hidden;
+    background-color: #1a1a1a; 
+}
+
+.carousel-inner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%; 
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden; 
+}
+
+.carousel-slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+/* ==========================================
+   CAPAS Y ELEMENTOS DE LA CARD
+   ========================================== */
+.hero-circle-bg {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -50%);
+    /* Aumentamos la altura para hacerlo ligeramente más grande */
+    height: 105%; 
+    width: auto;
+    z-index: 2;
+    pointer-events: none; 
+}
+
+.hero-container {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    /* Igualado con la navbar para alinear los extremos */
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 3rem; 
+}
+
+/* ==========================================
+   CONTENIDO IZQUIERDO (Textos y Botón)
+   ========================================== */
+
+.hero-content-left {
+    /* Cambiamos los 950px fijos por un porcentaje del espacio disponible */
+    width: 55%; 
+    padding-right: 3rem; 
+    /* Cambiamos los 8rem fijos por un porcentaje para que el empuje sea proporcional */
+    margin-left: 6%; 
+    /* Eliminamos el flex-shrink: 0; para permitir que la caja se adapte fluidamente */
+}
+
+.hero-text-group {
+    margin-bottom: 2.5rem;
+    color: white;
+}
+
+/* ==========================================
+   TÍTULO (FALSA ALINEACIÓN A 2 LÍNEAS)
+   ========================================== */
+.hero-text-group h1 {
+    /* La magia del clamp: font-size: clamp(minimo, tamaño_fluido, maximo); */
+    font-size: clamp(2.8rem, 3.5vw, 4.2rem); 
+    font-weight: 700;
+    line-height: 1.1;
+    overflow: hidden; 
+    width: auto; 
+    /* Eliminamos el width: 880px; fijo que teníamos antes */
+    margin-bottom: 0.2rem; 
+    padding-bottom: 10px;
+}
+
+/* (El .hero-text-group h1.title-line-2 se queda igual) */
+.hero-text-group h1.title-line-2 {
+    margin-bottom: 1.2rem;
+}
+
+.hero-text-group p {
+    /* Aplicamos clamp también al párrafo para que se encoja proporcionalmente */
+    font-size: clamp(1.4rem, 1.8vw, 2.2rem); 
+    line-height: 1.5;
+    font-weight: 300;
+    width: 100%; 
+}
+
+.hero-text-group strong {
+    font-weight: 700;
+}
+
+.hero-btn-container {
+    padding-left: 1.5rem; 
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #eb1c24;
+    color: white;
+    text-decoration: none;
+    padding: 1.2rem 4rem; 
+    font-size: 1.6rem;
+    font-weight: bold;
+    border-radius: 8px; 
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #c9161e;
+    transform: scale(1.05);
+}
+
+/* ==========================================
+   CONTENIDO DERECHO (Imagen Sarmex)
+   ========================================== */
+.hero-content-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    position: relative;
+}
+
+.hero-sarmex-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 90vh;
+    z-index: 4; 
+    /* Disminuye este valor para moverla a la izquierda (ej. 40%, 20%, 0%, o incluso valores negativos como -10%) */
+    transform: translateX(-10%); 
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6)); 
+}
+
+/* ==========================================
+   CONTROLES (FLECHAS Y PUNTOS)
+   ========================================== */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10; 
+    font-size: 1.8rem;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.carousel-control.prev { left: 20px; }
+.carousel-control.next { right: 20px; }
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 30px; 
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px; 
+    z-index: 10;
+}
+
+.dot {
+    width: 16px;
+    height: 16px;
+    background-color: #e8e8e8;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dot.active {
+    background-color: #eb1c24;
+    transform: scale(1.2); 
+}
+
+/* ==========================================
+   ANIMACIONES 
+   ========================================== */
+.char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.carousel-slide.active .char {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-text {
+    opacity: 0;
+    transition: opacity 0.8s ease 0.6s; 
+}
+
+.carousel-slide.active .animate-text {
+    opacity: 1;
 }
 
 /* ==========================================
    RESPONSIVIDAD (TABLETS Y MÓVILES)
    ========================================== */
-/* Botón Hamburguesa (oculto en escritorio) */
 .mobile-menu-btn {
     display: none; 
     background: none;
     border: none;
     cursor: pointer;
     flex-direction: column;
-    gap: 5px;
+    gap: 7px; 
 }
 
 .mobile-menu-btn .bar {
-    width: 25px;
-    height: 3px;
+    width: 37px; 
+    height: 4px; 
     background-color: white;
     transition: all 0.3s ease;
 }
 
-/* Ajustes para Laptops pequeñas o Tablets */
-@media (max-width: 1024px) {
-    .nav-title {
-        font-size: 0.9rem;
-    }
-    .nav-links {
-        gap: 1.5rem;
+@media (max-width: 1366px) {
+    .nav-title { font-size: 1.35rem; }
+    .nav-links { gap: 2.25rem; }
+    
+    .hero-content-left {
+        transform: scale(0.85);
+        transform-origin: left center;
+        width: 800px; 
     }
 }
 
-/* Ajustes para Dispositivos Móviles */
 @media (max-width: 768px) {
-    .nav-title {
-        display: none; /* Ocultamos el texto central en móviles por falta de espacio */
-    }
+    .nav-title { display: none; }
+    .mobile-menu-btn { display: flex; }
 
-    .mobile-menu-btn {
-        display: flex; /* Mostramos el botón hamburguesa */
-    }
-
-    /* Transformamos las pestañas en un menú desplegable */
     .nav-links {
         position: absolute;
         top: 100%;
@@ -177,20 +380,122 @@ body {
         box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     }
 
-    /* Esta clase la activaremos con JS para abrir el menú móvil */
-    .nav-links.active {
-        max-height: 250px;
-    }
-
+    .nav-links.active { max-height: 350px; }
     .nav-item {
-        padding: 1.2rem;
+        padding: 1.8rem; 
         text-align: center;
         width: 100%;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
+    .nav-item:hover { transform: none; }
 
-    /* Desactivamos el flotar en móviles para evitar saltos al tocar la pantalla */
-    .nav-item:hover {
+    /* ==========================================
+       HERO CARRUSEL MÓVIL (REDISEÑO VERTICAL)
+       ========================================== */
+    .hero-carousel {
+        /* Permite que la sección crezca si el contenido apilado es más alto que la pantalla */
+        height: auto;
+        min-height: calc(100vh - 121px);
+    }
+
+    .carousel-inner {
+        height: auto;
+        min-height: 100%;
+        align-items: stretch; 
+    }
+
+    .carousel-slide {
+        height: auto; 
+    }
+
+    .hero-container {
+        flex-direction: column;
+        /* Cambiamos 'center' por 'flex-start' para evitar que empuje el texto hacia arriba */
+        justify-content: flex-start;
+        padding: 3rem 1.5rem 2rem 1.5rem; /* Más espacio arriba para separarlo de la navbar */
+        max-width: 100%;
+        height: auto;
+    }
+
+    .hero-content-left {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0; 
+        padding-right: 0; 
+        margin-bottom: 2rem; 
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        text-align: center;  
+        /* ¡LA VERDADERA SOLUCIÓN! Reseteamos la escala que lo pegaba a la izquierda */
         transform: none; 
     }
+
+    .hero-text-group h1 {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        /* Quitamos el nowrap y le regresamos un mejor tamaño */
+        white-space: normal; 
+        font-size: clamp(1.8rem, 6vw, 2.5rem); 
+        margin-bottom: 0.2rem;
+    }
+
+    .hero-text-group {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .hero-text-group h1.title-line-2 {
+        margin-bottom: 1rem;
+    }
+
+    .hero-text-group p { 
+        width: 100%;
+        text-align: center;
+        /* Texto normal más pequeño */
+        font-size: clamp(1rem, 3.5vw, 1.3rem);
+        font-weight: 400; 
+    }
+
+    .hero-btn-container { 
+        padding-left: 0; 
+        margin-top: 1rem; 
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Reducimos específicamente el botón en móvil */
+    .hero-btn-container .btn-primary {
+        padding: 0.8rem 2.5rem;
+        font-size: 1.2rem;
+    }
+
+    .hero-circle-bg { 
+        display: none; 
+    }
+
+    .hero-content-right {
+        width: 100%;
+        display: flex;
+        justify-content: center; 
+        padding-bottom: 4.5rem; 
+    }
+
+    .hero-sarmex-img {
+        max-height: 30vh; /* Ligeramente más pequeña para liberar espacio vertical */
+        transform: translateX(0); 
+    }
+
+    .carousel-control { 
+        width: 45px; 
+        height: 45px; 
+        font-size: 1.2rem; 
+    }
+
+    
 }

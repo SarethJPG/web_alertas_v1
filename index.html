@@ -47,16 +47,86 @@
 
     <!-- Aquí irá el resto del contenido del sitio (Main, Secciones, Footer) -->
     <main>
-        <!-- Contenido temporal para poder probar el scroll de la navbar -->
-        <section id="inicio" style="height: 100vh; padding-top: 100px;">
-            <h1>Bienvenido (Contenido de prueba para scroll)</h1>
+        <!-- ==========================================
+            SECCIÓN: INICIO (CARRUSEL HERO)
+            ========================================== -->
+        <section id="inicio" class="hero-carousel">
+
+            <!-- Pista principal que contiene las 5 Cards -->
+            <div class="carousel-inner" id="carousel-inner">
+
+                <!-- ================= CARD 1 (Activa) ================= -->
+                <div class="carousel-slide active" style="background-image: url('imgs/banner-1.jpg');">
+
+                    <!-- Capa 2: Elemento 5 (Círculo rojo pegado a la derecha) -->
+                    <!-- Lo colocamos al nivel de la slide para anclarlo fácilmente al borde derecho -->
+                    <img src="imgs/circulo_banner.svg" alt="Fondo decorativo" class="hero-circle-bg">
+
+                    <!-- Contenedor central (limita el ancho y alinea Elemento 3 y 4) -->
+                    <div class="hero-container">
+
+                        <!-- Elemento 3: Contenedor Izquierdo (Textos y Botón) -->
+                        <div class="hero-content-left">
+
+                            <!-- Elemento 1: Título y Párrafo -->
+                            <div class="hero-text-group">
+    
+                                <h1 class="animate-title title-line-1">Cotiza tu proyecto con</h1>
+
+                                <h1 class="animate-title title-line-2">el Equipo SARMEX 11</h1>
+
+                                <p class="animate-text">
+                                    con acreditación oficial bajo la <strong>NORMA TÉCNICA DE PROTECCIÓN CIVIL NTE-003-CGPYGIR-2025</strong> en el Estado de México y los Equipos acreditados bajo la <strong>NORMA TÉCNICA NT-SGIRPC-SD-SAS-001-2-2024</strong> en la CDMX.
+                                </p>
+                            </div>
+
+                            <!-- Elemento 2: Botón (Desplazado ligeramente a la derecha) -->
+                            <div class="hero-btn-container">
+                                <a href="#cotiza" class="btn-primary">Cotiza aquí</a>
+                            </div>
+
+                        </div>
+
+                        <!-- Elemento 4: Contenedor Derecho (Imágenes) -->
+                        <div class="hero-content-right">
+                            <!-- Elemento 6: Imagen SARMEX -->
+                            <img src="imgs/SARMEX-11.png" alt="Equipo SARMEX 11" class="hero-sarmex-img">
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ================= CARDS 2 a 5 (Vacías temporalmente) ================= -->
+                <div class="carousel-slide" style="background-image: url('imgs/banner-1.jpg');"></div>
+                <div class="carousel-slide" style="background-image: url('imgs/banner-1.jpg');"></div>
+                <div class="carousel-slide" style="background-image: url('imgs/banner-1.jpg');"></div>
+                <div class="carousel-slide" style="background-image: url('imgs/banner-1.jpg');"></div>
+
+            </div>
+
+            <!-- ================= CONTROLES DEL CARRUSEL ================= -->
+
+            <!-- Flechas de navegación -->
+            <button class="carousel-control prev" id="btn-prev" aria-label="Slide anterior">
+                <!-- Icono de flecha izquierda -->
+                <span>&#10094;</span>
+            </button>
+            <button class="carousel-control next" id="btn-next" aria-label="Slide siguiente">
+                <!-- Icono de flecha derecha -->
+                <span>&#10095;</span>
+            </button>
+
+            <!-- Puntos indicadores (Dots) -->
+            <div class="carousel-indicators">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+                <span class="dot" data-index="4"></span>
+            </div>
+
         </section>
-        <section id="equipos" style="height: 100vh; background: #f4f4f4;">
-            <h2>Sección Equipos</h2>
-        </section>
-        <section id="cotiza" style="height: 100vh;">
-            <h2>Sección Cotiza</h2>
-        </section>
+    <!-- ================= FIN CARRUSEL HERO ================= -->
     </main>
 
     <!-- Enlace al archivo JS principal -->
