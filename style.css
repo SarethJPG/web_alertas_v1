@@ -1,0 +1,196 @@
+/* ==========================================
+   CONFIGURACIÓN GLOBAL Y RESET
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Fuente sans-serif limpia y moderna por defecto */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    overflow-x: hidden; /* Evita scroll horizontal indeseado */
+}
+
+/* ==========================================
+   SECCIÓN: NAVBAR (ESTILOS BASE)
+   ========================================== */
+.navbar {
+    background-color: #eb1c24;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    
+    /* Animación de entrada (Slide in) al cargar la página */
+    animation: slideInDown 0.8s ease-out forwards;
+    
+    /* Transición suave para cuando JS oculte/muestre la barra al hacer scroll */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Esta clase se añadirá mediante JS cuando el usuario baje en la página */
+.navbar.hidden-scroll {
+    transform: translateY(-100%);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 2rem;
+    max-width: 1920px; /* Escalabilidad para monitores muy grandes */
+    margin: 0 auto;
+}
+
+/* ==========================================
+   ELEMENTOS DE LA NAVBAR (IZQ, CENTRO, DER)
+   ========================================== */
+/* 1. Logo */
+.nav-logo img {
+    height: 55px; /* Ajusta este valor si tu logo es más grande o pequeño */
+    width: auto;
+    display: block;
+}
+
+/* 2. Título Central */
+.nav-title {
+    color: white;
+    text-align: center;
+    font-size: 1.05rem;
+    flex: 1; /* Permite que el título tome el espacio disponible en el centro */
+    padding: 0 2rem;
+}
+
+/* 3. Pestañas / Enlaces */
+.nav-links {
+    display: flex;
+    gap: 3rem; /* Misma distancia entre las 3 pestañas */
+    align-items: center;
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-size: 1.05rem;
+    position: relative;
+    /* Transición para el efecto de flotar (hover) */
+    transition: transform 0.3s ease; 
+}
+
+/* ==========================================
+   EFECTOS HOVER (PESTAÑAS)
+   ========================================== */
+.nav-item:hover {
+    /* Flotar 5px hacia arriba */
+    transform: translateY(-5px);
+    /* Bold casi imperceptible sin afectar el layout (sin empujar otros textos) */
+    text-shadow: 0 0 0.8px white;
+}
+
+/* Línea inferior de las pestañas */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; /* Distancia entre el texto y la línea */
+    left: 0;
+    width: 100%;
+    height: 1.5px; /* Línea delgada */
+    background-color: white;
+    
+    /* Configuración para la animación del centro a los lados */
+    transform: scaleX(0);
+    transform-origin: center; 
+    transition: transform 0.3s ease;
+}
+
+.nav-item:hover::after {
+    transform: scaleX(1);
+}
+
+/* ==========================================
+   ANIMACIÓN DE ENTRADA (KEYFRAMES)
+   ========================================== */
+@keyframes slideInDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
+   RESPONSIVIDAD (TABLETS Y MÓVILES)
+   ========================================== */
+/* Botón Hamburguesa (oculto en escritorio) */
+.mobile-menu-btn {
+    display: none; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.mobile-menu-btn .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+/* Ajustes para Laptops pequeñas o Tablets */
+@media (max-width: 1024px) {
+    .nav-title {
+        font-size: 0.9rem;
+    }
+    .nav-links {
+        gap: 1.5rem;
+    }
+}
+
+/* Ajustes para Dispositivos Móviles */
+@media (max-width: 768px) {
+    .nav-title {
+        display: none; /* Ocultamos el texto central en móviles por falta de espacio */
+    }
+
+    .mobile-menu-btn {
+        display: flex; /* Mostramos el botón hamburguesa */
+    }
+
+    /* Transformamos las pestañas en un menú desplegable */
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #eb1c24;
+        flex-direction: column;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Esta clase la activaremos con JS para abrir el menú móvil */
+    .nav-links.active {
+        max-height: 250px;
+    }
+
+    .nav-item {
+        padding: 1.2rem;
+        text-align: center;
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Desactivamos el flotar en móviles para evitar saltos al tocar la pantalla */
+    .nav-item:hover {
+        transform: none; 
+    }
+}
