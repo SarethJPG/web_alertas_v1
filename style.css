@@ -1499,3 +1499,99 @@ body {
         row-gap: 3.5rem;
     }
 }
+
+/* ==========================================
+   SECCIÓN 8: PREGUNTAS FRECUENTES (FAQ)
+   ========================================== */
+
+/* --- Diseño Base (Escritorio) --- */
+.faq-section {
+    background-color: #e8e8e8;
+    padding: 6rem 0; /* Separación superior e inferior */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.faq-container {
+    width: 100%;
+    max-width: 1760px;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el título y la lista horizontalmente */
+}
+
+/* Título de la sección */
+.faq-title {
+    color: #000000;
+    font-size: 2.6rem;
+    font-weight: 700; /* Bold fuerte */
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 7rem;
+    margin-top: -1rem;
+}
+
+/* Contenedor central de la lista */
+.faq-list {
+    width: 100%;
+    /* Permitimos que se estire bastante para que en monitores grandes 
+       quede en una sola línea, pero lo limitamos un poco para que sea legible */
+    max-width: 1900px; 
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* Separación entre cada bloque de pregunta/respuesta */
+}
+
+/* Cada bloque individual (Pregunta + Respuesta) */
+.faq-item {
+    display: flex;
+    flex-direction: column;
+    /* Alineamos el texto estrictamente a la izquierda dentro de su caja */
+    text-align: left; 
+}
+
+/* El texto de la pregunta (Bold) */
+.faq-question {
+    color: #000000;
+    font-size: 2rem;
+    font-weight: 700; /* Bold */
+    margin-bottom: 0.2rem; /* Ligera separación con la respuesta */
+    line-height: 1.3;
+}
+
+/* El texto de la respuesta (Regular/Sin bold) */
+.faq-answer {
+    color: #000000;
+    font-size: 1.8rem;
+    font-weight: 500; /* Peso normal/medio para diferenciarlo */
+    line-height: 1.6; /* Mayor interlineado para mejor lectura */
+}
+
+
+/* --- Responsivo (Móvil) --- */
+@media (max-width: 768px) {
+    .faq-section {
+        padding: 4rem 0;
+    }
+
+    .faq-title {
+        font-size: 1.8rem;
+        margin-bottom: 3rem;
+    }
+
+    .faq-list {
+        gap: 2rem;
+    }
+
+    .faq-question {
+        font-size: 1.2rem;
+    }
+
+    .faq-answer {
+        font-size: 1.1rem;
+        /* En móvil, los textos naturalmente brincarán a varias líneas, 
+           pero conservarán su alineación a la izquierda gracias al estilo base */
+    }
+}
