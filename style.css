@@ -8,7 +8,8 @@
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    /* Cambiamos Segoe UI por Montserrat como fuente predeterminada global */
+    font-family: 'Montserrat', sans-serif;
     overflow-x: hidden;
     padding-top: 135px;
 }
@@ -637,9 +638,9 @@ body {
 
 .acreditacion-text {
     font-size: 1.4rem;
-    font-weight: 400;
+    font-weight: 500;
     color: #000000;
-    line-height: 1.6;
+    line-height: 1.2;
     max-width: 1400px;   /* más ancho que los 1100px del header */
     margin: 0 auto;      /* centrado */
     padding: 0 1rem;     /* menos padding lateral */
@@ -710,10 +711,11 @@ body {
 
 .renta-title {
     color: #eb1c24;
-    font-size: 1.9rem;
+    font-size: 1.5rem;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+    margin-top: 2.3rem;
 }
 
 /* --- Responsivo --- */
@@ -961,3 +963,208 @@ body {
 /* --- Animaciones --- */
 
 /* no aplican nuevas animaciones en esta seccion */
+
+/* ==========================================
+   SECCIÓN 5: COBERTURA SASMEX
+   ========================================== */
+
+/* --- Diseño Base (Escritorio) --- */
+.cobertura-section {
+    background-color: #ffffff;
+    padding: 6rem 0; /* Ligera separación superior e inferior */
+    width: 100%;
+}
+
+.cobertura-container {
+    max-width: 1760px; /* Alineado con el ancho de las demás secciones */
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Título Principal de la Sección */
+.cobertura-title {
+    color: #eb1c24;
+    font-size: 2.4rem;
+    font-weight: 800; /* Extra bold */
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 4rem; /* Separación con el contenido de abajo */
+}
+
+/* Contenedor Grid/Flex para división en dos columnas */
+.cobertura-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5rem; /* Separación entre el mapa y los textos */
+}
+
+/* Columna Izquierda: Imagen del Mapa */
+.cobertura-col-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cobertura-mapa-img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Columna Derecha: Contenido Informativo */
+.cobertura-col-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alineación izquierda */
+    text-align: left;
+}
+
+/* Párrafos Informativos */
+.cobertura-paragraphs {
+    width: 100%;
+    margin-bottom: 2.5rem; /* Doble separación con el subtítulo */
+}
+
+.cobertura-p {
+    color: #000000;
+    font-size: 1.6rem;
+    line-height: 1.1;
+    text-align: justify; /* Alineación justificada */
+    margin-bottom: 1.2rem; /* Ligera separación entre párrafos */
+    width: 100%; /* Garantiza que ambos párrafos tengan exactamente el mismo ancho */
+    font-weight: 500;
+}
+
+.cobertura-p:last-child {
+    margin-bottom: 0;
+}
+
+/* Subtítulo y Enlace */
+.cobertura-info-link {
+    margin-bottom: 1.8rem; /* Espacio de diferencia antes de la lista */
+}
+
+.cobertura-subtitle {
+    color: #000000;
+    font-size: 1.3rem;
+    font-weight: 700; /* Bold */
+    margin-bottom: 0.3rem; /* Inmediatamente debajo el enlace */
+}
+
+.cobertura-link-text {
+    color: #000000;
+    font-size: 1.2rem;
+    font-weight: 700; /* Mismo tamaño y bold */
+}
+
+/* Enlace sin efectos de cambio de color o hover */
+.cobertura-link, 
+.cobertura-link:visited, 
+.cobertura-link:hover, 
+.cobertura-link:active {
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Lista con viñetas personalizadas */
+.cobertura-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.cobertura-item {
+    color: #000000;
+    font-size: 1.15rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem; /* Sangría única uniforme para todos los elementos */
+}
+
+/* Elemento 1: Punto negro relleno */
+.item-filled::before {
+    content: '●';
+    color: #000000;
+    font-size: 1rem;
+}
+
+/* Elemento 2: Círculo hueco (sin rellenar) */
+.item-hollow::before {
+    content: '○';
+    color: #000000;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Elemento 3: Triángulo amarillo */
+.item-triangle::before {
+    content: '▲';
+    color: #ffd700; /* Amarillo */
+    font-size: 0.9rem;
+}
+
+
+/* --- Responsivo (Móvil) --- */
+@media (max-width: 768px) {
+    .cobertura-section {
+        padding: 4rem 0;
+    }
+
+    .cobertura-title {
+        font-size: 1.6rem;
+        margin-bottom: 2.5rem;
+    }
+
+    /* Cambio a columna y reordenamiento con display: contents */
+    .cobertura-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .cobertura-col-right {
+        display: contents; /* Desenvuelve sus hijos para ordenarlos con el mapa */
+    }
+
+    /* 1. Párrafos centrados con ancho máximo común */
+    .cobertura-paragraphs {
+        order: 1;
+        width: 100%;
+        max-width: 600px;
+        margin-bottom: 2rem;
+    }
+
+    /* 2. Imagen centrada debajo de los párrafos */
+    .cobertura-col-left {
+        order: 2;
+        width: 100%;
+        margin-bottom: 2.5rem;
+    }
+
+    .cobertura-mapa-img {
+        max-width: 100%;
+    }
+
+    /* 3. Subtítulo y Enlace debajo del mapa */
+    .cobertura-info-link {
+        order: 3;
+        width: 100%;
+        max-width: 600px;
+        text-align: left;
+    }
+
+    /* 4. Lista debajo de la información */
+    .cobertura-list {
+        order: 4;
+        width: 100%;
+        max-width: 600px;
+    }
+}
