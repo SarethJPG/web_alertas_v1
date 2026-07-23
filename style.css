@@ -842,3 +842,122 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* ==========================================
+   SECCIÓN 4: DESCARGAS EN PDF
+   ========================================== */
+/* --- Diseño Base --- */
+.descargas-section {
+    position: relative;
+    width: 100%;
+    /* Definimos una altura mínima (60vh) para que la imagen de fondo luzca imponente */
+    min-height: 60vh; 
+    display: flex;
+    /* Esto empuja el contenedor de textos hacia abajo (altura de 2/3) */
+    align-items: flex-end; 
+    justify-content: center;
+    /* Propiedades del fondo: recorta los lados sin deformarse en pantallas angostas */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom: 9rem; /* Margen inferior para que no quede pegado al borde */
+}
+
+
+.descargas-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1760px; /* Alineado con el ancho de las demás secciones */
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8rem; /* Separación vertical entre el título y los dos subtítulos */
+}
+
+.descargas-main-title {
+    color: #ffffff;
+    font-size: 2.6rem;
+    font-weight: 700; /* Bold fuerte */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.descargas-grid {
+    display: flex;
+    /* Distribuye el espacio de manera idéntica entre los lados y el centro */
+    justify-content: space-evenly; 
+    width: 100%;
+    gap: 2rem;
+}
+
+.descarga-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    max-width: 600px; /* Límite para que no se estiren demasiado en pantallas gigantes */
+}
+
+.descarga-subtitle {
+    color: #ffffff;
+    font-size: 1.5rem; /* Ligeramente más chico que el título principal */
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+}
+
+/* --- Responsivo --- */
+@media (max-width: 1024px) {
+    /* En laptops, reducimos textos y la distancia entre ellos y los bordes */
+    .descargas-main-title {
+        font-size: 2.2rem;
+    }
+    .descarga-subtitle {
+        font-size: 1.3rem;
+    }
+    .descargas-grid {
+        justify-content: space-between; 
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .descargas-section {
+        /* Mantenemos una altura considerable en móvil para que recorte la foto a los lados */
+        min-height: 600px; 
+        align-items: center; /* En móvil lo centramos verticalmente un poco más para equilibrar */
+        padding-bottom: 4rem;
+    }
+
+    .descargas-container {
+        gap: 3rem;
+    }
+
+    .descargas-main-title {
+        font-size: 1.8rem;
+    }
+
+    /* ¡EL CAMBIO MÓVIL! Pasamos de horizontal a vertical */
+    .descargas-grid {
+        flex-direction: column; 
+        align-items: center;
+        gap: 4rem; /* Separación entre el botón 1 y el subtítulo 2 */
+    }
+
+    .descarga-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+        /* Alineación centrada justificada y obligada a doble línea con max-width */
+        text-align: center;
+        max-width: 320px; 
+    }
+}
+
+/* --- Animaciones --- */
+
+/* no aplican nuevas animaciones en esta seccion */
