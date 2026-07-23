@@ -206,3 +206,71 @@ fadeUpElements.forEach(element => {
 // 5. Seleccionamos y vigilamos las nuevas imágenes con fade-in (Efecto 3D)
 const fadeInElements = document.querySelectorAll('.animate-fade-in');
 fadeInElements.forEach(element => fadeObserver.observe(element));
+
+// ==========================================
+// SECCIÓN: CARRUSEL DE EQUIPOS (2 CARDS)
+// ==========================================
+const equiposInner = document.getElementById('equipos-carousel-inner');
+const equiposBtnPrev = document.getElementById('equipos-btn-prev');
+const equiposBtnNext = document.getElementById('equipos-btn-next');
+const equipoCards = document.querySelectorAll('.equipo-card');
+
+let equiposCurrentIndex = 0;
+
+function updateEquiposCarousel() {
+    // Si no estamos en la página de equipos, evitamos errores
+    if (!equiposInner || equipoCards.length === 0) return;
+
+    // Detectamos si es móvil (1 card) o escritorio (2 cards)
+    const isMobile = window.innerWidth <= 768;
+    const cardsVisible = isMobile ? 1 : 2;
+    const maxIndex = equipoCards.length - cardsVisible;
+
+    // Protecciones de límites
+    if (equiposCurrentIndex < 0) equiposCurrentIndex = 0;
+    if (equiposCurrentIndex > maxIndex) equiposCurrentIndex = maxIndex;
+
+    // Calculamos el ancho real de la tarjeta más el gap
+    const cardWidth = equipoCards[0].offsetWidth;
+    const gap = parseFloat(window.getComputedStyle(equiposInner).gap) || 0;
+    
+    // Distancia total a mover
+    const moveAmount = (cardWidth + gap) * equiposCurrentIndex;
+    equiposInner.style.transform = `translateX(-${moveAmount}px)`;
+
+    // Lógica para mostrar/ocultar flechas de forma intuitiva
+    if (equiposCurrentIndex === 0) {
+        equiposBtnPrev.style.display = 'none';
+    } else {
+        equiposBtnPrev.style.display = 'flex';
+    }
+
+    if (equiposCurrentIndex >= maxIndex) {
+        equiposBtnNext.style.display = 'none';
+    } else {
+        equiposBtnNext.style.display = 'flex';
+    }
+}
+
+// Inicializamos eventos de flechas
+if(equiposBtnNext && equiposBtnPrev) {
+    equiposBtnNext.addEventListener('click', () => {
+        equiposCurrentIndex++;
+        updateEquiposCarousel();
+    });
+
+    equiposBtnPrev.addEventListener('click', () => {
+        equiposCurrentIndex--;
+        updateEquiposCarousel();
+    });
+
+    // Aseguramos que se recalcule si el usuario gira el celular o cambia el tamaño de la ventana
+    window.addEventListener('resize', () => {
+        // Al cambiar pantalla, reiniciamos al inicio para evitar bugs visuales
+        equiposCurrentIndex = 0; 
+        updateEquiposCarousel();
+    });
+    
+    // Arrancamos el carrusel para configurar las flechas de inicio
+    updateEquiposCarousel();
+}

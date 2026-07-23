@@ -1168,3 +1168,169 @@ body {
         max-width: 600px;
     }
 }
+
+/* ==========================================
+   SECCIÓN 6: EQUIPOS (CARRUSEL 2 PRODUCTOS)
+   ========================================== */
+
+/* --- Diseño Base (Escritorio) --- */
+.equipos-section {
+    background-color: #e8e8e8;
+    padding: 6rem 0;
+    width: 100%;
+}
+
+.equipos-container {
+    max-width: 1760px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.equipos-title {
+    color: #eb1c24;
+    font-size: 2.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: -2rem;
+    margin-top: -2rem;
+    text-align: center;
+}
+
+/* Envoltura con espacio lateral exacto para que las flechas no estorben */
+.equipos-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1980px; /* Aumentamos el ancho permitido para que las imágenes tengan espacio de sobra */
+    padding: 0 70px;   /* Margen lateral para alojar las flechas */
+    overflow: hidden;  /* Elimina cualquier borde o asomo del elemento siguiente */
+}
+
+/* Pista deslizante */
+.equipos-carousel-inner {
+    display: flex;
+    gap: 4rem; /* Separación horizontal uniforme entre productos */
+    transition: transform 0.5s ease-out;
+    width: 100%;
+}
+
+/* Cada producto (Sin fondo blanco ni bordes de tarjeta) */
+.equipo-card {
+    /* Exactamente 2 elementos por vista considerando el gap */
+    flex: 0 0 calc(50% - 2rem); 
+    background: transparent; /* Quitamos el contenedor blanco */
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.equipo-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Imagen significativamente más grande */
+.equipo-img-wrapper {
+    height: 700px; /* Aumentamos sustancialmente la altura para hacer lucir el producto */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.equipo-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.2));
+}
+
+.equipo-card-title {
+    margin-top: -7rem;
+    color: #000000;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Botón estilizado idéntico al resto de la web */
+.btn-equipo {
+    padding: 1rem 1rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+
+}
+
+/* --- FLECHAS RECICLADAS EXACTAS DEL PRIMER CARRUSEL (HERO) --- */
+.equipos-carousel-wrapper .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente original */
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.8rem;
+    transition: background-color 0.3s ease;
+    border-radius: 0; /* Formato estándar rectilíneo del Hero */
+}
+
+.equipos-carousel-wrapper .carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.9); /* Oscurece al hover */
+}
+
+.equipos-carousel-wrapper .prev {
+    left: 0;
+}
+
+.equipos-carousel-wrapper .next {
+    right: 0;
+}
+
+/* --- Responsivo (Móvil) --- */
+@media (max-width: 768px) {
+    .equipos-section {
+        padding: 4rem 0;
+    }
+
+    .equipos-title {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .equipos-carousel-wrapper {
+        padding: 0 45px;
+    }
+
+    .equipo-card {
+        flex: 0 0 100%; /* 1 solo producto por pantalla en móvil */
+    }
+
+    .equipo-img-wrapper {
+        height: 320px;
+    }
+
+    .equipo-card-title {
+        font-size: 1.3rem;
+    }
+
+    .equipos-carousel-wrapper .carousel-control {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+}
