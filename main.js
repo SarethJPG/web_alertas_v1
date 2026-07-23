@@ -202,3 +202,7 @@ const fadeObserver = new IntersectionObserver((entries, observer) => {
 fadeUpElements.forEach(element => {
     fadeObserver.observe(element);
 });
+
+// 5. Seleccionamos y vigilamos las nuevas imágenes con fade-in (Efecto 3D)
+const fadeInElements = document.querySelectorAll('.animate-fade-in');
+fadeInElements.forEach(element => fadeObserver.observe(element));

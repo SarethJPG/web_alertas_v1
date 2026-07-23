@@ -1,6 +1,6 @@
-/* ==========================================
-   CONFIGURACIÓN GLOBAL Y RESET
-   ========================================== */
+/* ==========================
+   GLOBAL RESET Y TIPOGRAFÍA
+   ========================== */
 * {
     margin: 0;
     padding: 0;
@@ -10,12 +10,13 @@
 body {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     overflow-x: hidden;
-    padding-top: 135px; 
+    padding-top: 135px;
 }
 
-/* ==========================================
-   SECCIÓN: NAVBAR (ESTILOS BASE)
-   ========================================== */
+/* ==========================
+   NAVBAR
+   ========================== */
+/* --- Estilos base --- */
 .navbar {
     background-color: #eb1c24;
     position: fixed;
@@ -23,7 +24,6 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
-    animation: slideInDown 0.8s ease-out forwards;
     transition: transform 0.4s ease-out;
 }
 
@@ -35,17 +35,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Aumentamos el padding lateral de 3rem a 5rem para separar los 3 objetos de las orillas */
-    padding: 1.2rem 9rem; 
+    padding: 1.2rem 9rem;
     max-width: 1920px;
     margin: 0 auto;
 }
 
-/* ==========================================
-   ELEMENTOS DE LA NAVBAR
-   ========================================== */
 .nav-logo img {
-    height: 97px; 
+    height: 97px;
     width: auto;
     display: block;
 }
@@ -53,27 +49,24 @@ body {
 .nav-title {
     color: white;
     text-align: center;
-    /* Reducimos el tamaño de la fuente original (ej. de 1.6rem a 1.35rem) */
-    font-size: 1rem; 
+    font-size: 1rem;
     flex: 1;
-    /* Aumentamos la separación lateral respecto al logo y las pestañas a 4rem */
     padding: 0 4rem;
-    /* Obligamos al texto a mantenerse siempre en una sola línea */
-    white-space: nowrap; 
+    white-space: nowrap;
 }
 
 .nav-links {
     display: flex;
-    gap: 4.5rem; 
+    gap: 4.5rem;
     align-items: center;
 }
 
 .nav-item {
     color: white;
     text-decoration: none;
-    font-size: 1.6rem; 
+    font-size: 1.6rem;
     position: relative;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
 }
 
 .nav-item:hover {
@@ -90,7 +83,7 @@ body {
     height: 2px;
     background-color: white;
     transform: scaleX(0);
-    transform-origin: center; 
+    transform-origin: center;
     transition: transform 0.3s ease;
 }
 
@@ -98,381 +91,59 @@ body {
     transform: scaleX(1);
 }
 
-@keyframes slideInDown {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
-}
-
-/* ==========================================
-   SECCIÓN: HERO CARRUSEL (ESTILOS BASE)
-   ========================================== */
-.hero-carousel {
-    position: relative;
-    width: 100%;
-    height: calc(100vh - 121px); 
-    min-height: 600px;
-    overflow: hidden;
-    background-color: #1a1a1a; 
-}
-
-.carousel-inner {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s ease-in-out;
-}
-
-.carousel-slide {
-    min-width: 100%; 
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    overflow: hidden; 
-}
-
-.carousel-slide::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; 
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-}
-
-/* ==========================================
-   CAPAS Y ELEMENTOS DE LA CARD
-   ========================================== */
-.hero-circle-bg {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translate(50%, -50%);
-    /* Aumentamos la altura para hacerlo ligeramente más grande */
-    height: 105%; 
-    width: auto;
-    z-index: 2;
-    pointer-events: none; 
-}
-
-.hero-container {
-    position: relative;
-    z-index: 3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    /* Igualado con la navbar para alinear los extremos */
-    max-width: 1920px;
-    margin: 0 auto;
-    padding: 0 3rem; 
-}
-
-/* ==========================================
-   CONTENIDO IZQUIERDO (Textos y Botón)
-   ========================================== */
-
-.hero-content-left {
-    /* Cambiamos los 950px fijos por un porcentaje del espacio disponible */
-    width: 55%; 
-    padding-right: 3rem; 
-    /* Cambiamos los 8rem fijos por un porcentaje para que el empuje sea proporcional */
-    margin-left: 6%; 
-    /* Eliminamos el flex-shrink: 0; para permitir que la caja se adapte fluidamente */
-}
-
-.hero-text-group {
-    margin-bottom: 2.5rem;
-    color: white;
-}
-
-/* ==========================================
-   TÍTULO (FALSA ALINEACIÓN A 2 LÍNEAS)
-   ========================================== */
-.hero-text-group h1 {
-    /* La magia del clamp: font-size: clamp(minimo, tamaño_fluido, maximo); */
-    font-size: clamp(2.8rem, 3.5vw, 4.2rem); 
-    font-weight: 700;
-    line-height: 1.1;
-    overflow: hidden; 
-    width: auto; 
-    /* Eliminamos el width: 880px; fijo que teníamos antes */
-    margin-bottom: 0.2rem; 
-    padding-bottom: 10px;
-}
-
-/* (El .hero-text-group h1.title-line-2 se queda igual) */
-.hero-text-group h1.title-line-2 {
-    margin-bottom: 1.2rem;
-}
-
-.hero-text-group p {
-    /* Aplicamos clamp también al párrafo para que se encoja proporcionalmente */
-    font-size: clamp(1.4rem, 1.8vw, 2.2rem); 
-    line-height: 1.5;
-    font-weight: 300;
-    width: 100%; 
-}
-
-.hero-text-group strong {
-    font-weight: 700;
-}
-
-.hero-btn-container {
-    padding-left: 1.5rem; 
-}
-
-.btn-primary {
-    display: inline-block;
-    background-color: #eb1c24;
-    color: white;
-    text-decoration: none;
-    padding: 1.2rem 4rem; 
-    font-size: 1.6rem;
-    font-weight: bold;
-    border-radius: 8px; 
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn-primary:hover {
-    background-color: #c9161e;
-    transform: scale(1.05);
-}
-
-/* ==========================================
-   CONTENIDO DERECHO (Imagen Sarmex)
-   ========================================== */
-.hero-content-right {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end; 
-    align-items: center;
-    position: relative;
-}
-
-.hero-sarmex-img {
-    max-width: 100%;
-    height: auto;
-    max-height: 90vh;
-    z-index: 4; 
-    /* Disminuye este valor para moverla a la izquierda (ej. 40%, 20%, 0%, o incluso valores negativos como -10%) */
-    transform: translateX(-10%); 
-    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6)); 
-}
-
-/* ==========================================
-   CONTROLES (FLECHAS Y PUNTOS)
-   ========================================== */
-.carousel-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 10; 
-    font-size: 1.8rem;
-    transition: background-color 0.3s ease;
-}
-
-.carousel-control:hover {
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-.carousel-control.prev { left: 20px; }
-.carousel-control.next { right: 20px; }
-
-.carousel-indicators {
-    position: absolute;
-    bottom: 30px; 
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 15px; 
-    z-index: 10;
-}
-
-.dot {
-    width: 16px;
-    height: 16px;
-    background-color: #e8e8e8;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.dot.active {
-    background-color: #eb1c24;
-    transform: scale(1.2); 
-}
-
-/* ==========================================
-   ANIMACIONES 
-   ========================================== */
-.char {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(-30px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.carousel-slide.active .char {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.animate-text {
-    opacity: 0;
-    transition: opacity 0.8s ease 0.6s; 
-}
-
-.carousel-slide.active .animate-text {
-    opacity: 1;
-}
-
-/* ==========================================
-   SECCIÓN 2: CARACTERÍSTICAS / PRIORIDADES
-   ========================================== */
-.features-section {
-    background-color: #ffffff;
-    /* Márgenes superior e inferior amplios para centrar verticalmente */
-    padding: 8rem 0; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.features-container {
-    /* El uso de Grid crea una matriz/tabla perfecta */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 6rem; 
-    /* Aumentamos el ancho máximo permitido para estirar los 3 grupos */
-    max-width: 1760px; 
-    margin: 0 auto;
-    /* Reducimos significativamente los márgenes laterales para ganar espacio horizontal */
-    padding: 0 1rem; 
-}
-
-.feature-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-/* Contenedor de la imagen para asegurar que todos los iconos midan y ocupen lo mismo */
-.feature-icon-wrapper {
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90px; 
-}
-
-.feature-icon {
-    width: auto;
-    height: 100%;
-    max-height: 80px; /* Fuerza a las 3 imágenes a tener el mismo tamaño máximo */
-}
-
-/* Contenedor de los títulos (Alineación con el truco de la línea oculta) */
-.feature-title-group {
-    margin-bottom: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-}
-
-.feature-title {
-    color: #eb1c24;
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase; /* Fuerza las letras a MAYÚSCULAS */
-    line-height: 1.3;
-}
-
-.feature-title.hidden-line {
-    visibility: hidden; /* Oculta la segunda línea pero mantiene el espacio vertical */
-}
-
-/* Párrafos alineados a la línea base del Grupo 2 */
-.feature-text {
-    color: #000000;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    font-weight: 500;
-}
-
-/* ==========================================
-   ANIMACIONES: FADE-UP ESCALONADO
-   ========================================== */
-.animate-fade-up {
-    opacity: 0;
-    transform: translateY(50px); /* Inicia desplazado hacia abajo */
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-/* Clase que activaremos con JavaScript al hacer scroll */
-.animate-fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Retrasos para crear el efecto escalonado (1, 2, 3) */
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.3s; }
-.delay-3 { transition-delay: 0.5s; }
-
-/* ==========================================
-   RESPONSIVIDAD (TABLETS Y MÓVILES)
-   ========================================== */
+/* --- Responsivo --- */
 .mobile-menu-btn {
-    display: none; 
+    display: none;
     background: none;
     border: none;
     cursor: pointer;
     flex-direction: column;
-    gap: 7px; 
+    gap: 7px;
 }
 
 .mobile-menu-btn .bar {
-    width: 37px; 
-    height: 4px; 
+    width: 37px;
+    height: 4px;
     background-color: white;
     transition: all 0.3s ease;
 }
 
 @media (max-width: 1366px) {
-    /* Reducimos aún más la letra en laptops para que la única línea quepa perfectamente */
-    .nav-title { font-size: 1.15rem; }
-    .nav-links { gap: 2.25rem; }
-    
-    .hero-content-left {
-        transform: scale(0.85);
-        transform-origin: left center;
-        width: 800px; 
+    .nav-title {
+        font-size: 1.15rem;
+    }
+
+    .nav-links {
+        gap: 2.25rem;
     }
 }
 
 @media (max-width: 768px) {
-    body { padding-top: 110px; }
-    .nav-logo img { height: 75px; }
+    body {
+        padding-top: 110px;
+    }
 
-    .nav-container{
+    .nav-logo img {
+        height: 90px;
+    }
+
+    .nav-container {
         padding: 1.2rem 1.5rem;
     }
 
-    .nav-title { display: none; }
-    .mobile-menu-btn { display: flex; }
+    .nav-title {
+        display: none;
+    }
+
+    /* ¡LA SOLUCIÓN 1! Restauramos el display: flex para que el botón exista en móvil */
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .mobile-menu-btn .bar {
+        width: 45px; 
+        height: 5px; 
+    }
 
     .nav-links {
         position: absolute;
@@ -488,39 +159,246 @@ body {
         box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     }
 
-    .nav-links.active { max-height: 350px; }
+    .nav-links.active {
+        max-height: 350px;
+    }
+
     .nav-item {
-        padding: 1.8rem; 
+        padding: 1.8rem;
         text-align: center;
         width: 100%;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .nav-item:hover { transform: none; }
 
-    /* ==========================================
-       HERO CARRUSEL MÓVIL (REDISEÑO VERTICAL)
-       ========================================== */
+    .nav-item:hover {
+        transform: none;
+    }
+}
+
+/* --- Animaciones --- */
+@keyframes slideInDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+/* ==========================
+   HERO CARRUSEL
+   ========================== */
+
+/* --- Estilos base --- */
+.hero-carousel {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 121px);
+    min-height: 600px;
+    overflow: hidden;
+    background-color: #1a1a1a;
+}
+
+.carousel-inner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-slide::before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero-circle-bg {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -50%);
+    height: 105%;
+    width: auto;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+.hero-content-left {
+    width: 55%;
+    padding-right: 3rem;
+    margin-left: 6%;
+}
+
+.hero-text-group {
+    margin-bottom: 2.5rem;
+    color: white;
+}
+
+.hero-text-group h1 {
+    font-size: clamp(2.8rem, 3.5vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 0.2rem;
+    padding-bottom: 10px;
+}
+
+.hero-text-group h1.title-line-2 {
+    margin-bottom: 1.2rem;
+}
+
+.hero-text-group p {
+    font-size: clamp(1.4rem, 1.8vw, 2.2rem);
+    line-height: 1.5;
+    font-weight: 300;
+    width: 100%;
+}
+
+.hero-btn-container {
+    padding-left: 1.5rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #eb1c24;
+    color: white;
+    text-decoration: none;
+    padding: 1.2rem 4rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #c9161e;
+    transform: scale(1.05);
+}
+
+.hero-content-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+
+.hero-sarmex-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 90vh;
+    z-index: 4;
+    transform: translateX(-10%);
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6));
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.8rem;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.carousel-control.prev { left: 20px; }
+.carousel-control.next { right: 20px; }
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.dot {
+    width: 16px;
+    height: 16px;
+    background-color: #e8e8e8;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dot.active {
+    background-color: #eb1c24;
+    transform: scale(1.2);
+}
+
+/* --- Responsivo --- */
+@media (max-width: 1366px) {
+    .hero-content-left {
+        transform: scale(0.85);
+        transform-origin: left center;
+        width: 800px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    /* Hero carrusel ajustes */
     .hero-carousel {
-        /* Permite que la sección crezca si el contenido apilado es más alto que la pantalla */
+        display: flex;
+        flex-direction: column;
         height: auto;
-        min-height: calc(100vh - 121px);
+        min-height: unset; /* Ajustado a 110px exactos por tu navbar móvil */
     }
 
     .carousel-inner {
+        /* ¡LA MAGIA AQUÍ! flex: 1 obliga a la pista a estirarse y comerse el espacio muerto */
+        flex: 1; 
         height: auto;
-        min-height: 100%;
-        align-items: stretch; 
+        align-items: stretch; /* Obliga a la diapositiva a crecer junto con la pista */
     }
 
     .carousel-slide {
-        height: auto; 
+        height: auto;
     }
 
     .hero-container {
         flex-direction: column;
-        /* Cambiamos 'center' por 'flex-start' para evitar que empuje el texto hacia arriba */
         justify-content: flex-start;
-        padding: 3rem 1.5rem 2rem 1.5rem; /* Más espacio arriba para separarlo de la navbar */
+        padding: 1.5rem 1.5rem 2rem 1.5rem;
+        /* ¡LA SOLUCIÓN 2! Regresamos los anchos al 100% para que nada se desborde */
+        width: 100%;
         max-width: 100%;
         height: auto;
     }
@@ -528,96 +406,439 @@ body {
     .hero-content-left {
         width: 100%;
         max-width: 100%;
-        margin-left: 0; 
-        padding-right: 0; 
-        margin-bottom: 2rem; 
+        margin-left: 0;
+        padding-right: 0;
+        margin-bottom: 2rem;
         display: flex;
         flex-direction: column;
-        align-items: center; 
-        text-align: center;  
-        /* ¡LA VERDADERA SOLUCIÓN! Reseteamos la escala que lo pegaba a la izquierda */
-        transform: none; 
+        align-items: center;
+        text-align: center;
+        transform: none;
+    }
+
+    /* Restauramos el contenedor agrupador que se había borrado */
+    .hero-text-group {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
     }
 
     .hero-text-group h1 {
         width: 100%;
         max-width: 100%;
         text-align: center;
-        /* Quitamos el nowrap y le regresamos un mejor tamaño */
-        white-space: normal; 
-        font-size: clamp(1.8rem, 6vw, 2.5rem); 
+        white-space: normal;
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
         margin-bottom: 0.2rem;
     }
-
-    .hero-text-group {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
 
     .hero-text-group h1.title-line-2 {
         margin-bottom: 1rem;
     }
 
-    .hero-text-group p { 
+    .hero-text-group p {
         width: 100%;
-        text-align: center;
-        /* Texto normal más pequeño */
         font-size: clamp(1rem, 3.5vw, 1.3rem);
-        font-weight: 400; 
+        font-weight: 400;
+        text-align: center;
     }
 
-    .hero-btn-container { 
-        padding-left: 0; 
-        margin-top: 1rem; 
+    .hero-btn-container {
+        padding-left: 0;
+        margin-top: 1rem;
         display: flex;
         justify-content: center;
         width: 100%;
     }
 
-    /* Reducimos específicamente el botón en móvil */
     .hero-btn-container .btn-primary {
         padding: 0.8rem 2.5rem;
         font-size: 1.2rem;
     }
 
-    .hero-circle-bg { 
-        display: none; 
+    .hero-circle-bg {
+        display: none;
     }
 
     .hero-content-right {
         width: 100%;
         display: flex;
-        justify-content: center; 
-        padding-bottom: 4.5rem; 
+        justify-content: center;
+        padding-bottom: 3rem;
     }
 
     .hero-sarmex-img {
-        max-height: 30vh; /* Ligeramente más pequeña para liberar espacio vertical */
-        transform: translateX(0); 
+        max-height: 35vh; 
+        transform: translateX(0);
     }
 
-    .carousel-control { 
-        width: 45px; 
-        height: 45px; 
-        font-size: 1.2rem; 
+    .carousel-control {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
     }
+}
 
-    /* ==========================================
-       SECCIÓN CARACTERÍSTICAS (MÓVIL)
-       ========================================== */
+/* --- Animaciones --- */
+.char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.carousel-slide.active .char {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-text {
+    opacity: 0;
+    transition: opacity 0.8s ease 0.6s;
+}
+
+.carousel-slide.active .animate-text {
+    opacity: 1;
+}
+
+/* ==========================
+   FEATURES SECTION
+   ========================== */
+
+/* --- Estilos base (PC/Monitor) --- */
+.features-section {
+    background-color: #ffffff;
+    padding: 8rem 0;              /* espacio vertical amplio */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.features-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 6rem;                    /* separación entre columnas */
+    max-width: 1760px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* --- Iconos --- */
+.feature-icon-wrapper {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+}
+
+.feature-icon {
+    width: auto;
+    height: 100%;
+    max-height: 80px;             /* fuerza tamaño uniforme */
+}
+
+/* --- Títulos --- */
+.feature-title-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.feature-title {
+    color: #eb1c24;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+.feature-title.hidden-line {
+    visibility: hidden;           /* mantiene espacio vertical */
+}
+
+/* --- Texto --- */
+.feature-text {
+    color: #000000;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* --- Responsivo --- */
+@media (max-width: 768px) {
     .features-section {
-        padding: 5rem 0; /* Margen superior e inferior reducido en móvil */
+        padding: 5rem 0;          /* menos espacio en móvil */
     }
 
     .features-container {
-        /* Convierte la matriz a una sola columna (uno debajo de otro) */
         grid-template-columns: 1fr; 
-        gap: 4rem; /* Misma distancia vertical entre cada grupo */
-        padding: 0 2rem; /* Margen lateral menor que el superior/inferior */
+        gap: 4rem;                /* separación vertical */
+        padding: 0 2rem;
+    }
+}
+
+/* --- Animaciones --- */
+.animate-fade-up {
+    opacity: 0;
+    transform: translateY(50px);  /* inicia desplazado hacia abajo */
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* retrasos escalonados */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.5s; }
+
+/* ==========================
+   ACREDITACIÓN Y PRODUCTOS 3D
+   ========================== */
+
+/* --- Sección base --- */
+.acreditacion-section {
+    background: radial-gradient(circle at center, #ffffff 0%, #a1a1a1 100%);
+    padding: 6rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* --- Encabezado --- */
+.acreditacion-header {
+    text-align: center;
+    max-width: 1600px;
+    margin-bottom: 4rem;
+    padding: 0 2rem;
+}
+
+.acreditacion-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 3rem;
+}
+
+.acreditacion-text {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.6;
+    max-width: 1400px;   /* más ancho que los 1100px del header */
+    margin: 0 auto;      /* centrado */
+    padding: 0 1rem;     /* menos padding lateral */
+}
+
+/* --- Contenedor con perspectiva --- */
+.productos-perspective-container {
+    width: 100%;
+    max-width: 1920px;
+    perspective: 800px; /* más cerrado para compactar */
+    margin-bottom: -7rem;
+    margin-top: -4rem;
+    padding: 0;
+}
+
+.productos-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+/* --- Imágenes --- */
+.producto-img {
+    height: auto;
+    max-height: 700px; /* tamaño general */
+    object-fit: contain;
+    filter: drop-shadow(0 12px 18px rgba(0,0,0,0.3));
+    transition: transform 0.4s ease;
+    margin: 0 -2rem; /* separación compacta */
+}
+
+/* --- Posiciones ajustadas --- */
+.outer-left {
+    transform: rotateY(-12deg) scale(0.92); /* un poco más rotada hacia afuera */
+    z-index: 1;
+}
+
+.inner-left {
+    transform: rotateY(-5deg) scaleY(1.05); /* más alta solo en vertical */
+    z-index: 2;
+}
+
+.center-main {
+    transform: rotateY(0deg) scale(1.1) translateY(20px);
+    z-index: 3;
+    filter: drop-shadow(0 20px 28px rgba(0,0,0,0.5));
+}
+
+.inner-right {
+    transform: rotateY(5deg) scaleY(1.05); /* más alta solo en vertical */
+    z-index: 2;
+}
+
+.outer-right {
+    transform: rotateY(12deg) scale(0.92); /* un poco más rotada hacia afuera */
+    z-index: 1;
+}
+
+
+/* --- Footer --- */
+.acreditacion-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.renta-title {
+    color: #eb1c24;
+    font-size: 1.9rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+/* --- Responsivo --- */
+@media (max-width: 1024px) {
+    .producto-img {
+        max-height: 450px;
+        margin: 0 -1rem;
+    }
+}
+
+/* ¡LA CORRECCIÓN!: Aquí está el @media que protege a tu vista de escritorio */
+@media (max-width: 768px) {
+    /* ==========================================
+       SECCIÓN ACREDITACIÓN Y PRODUCTOS (RESPONSIVO MÓVIL)
+       ========================================== */
+    .acreditacion-title { 
+        font-size: 1.8rem; 
+    }
+    
+    .acreditacion-text { 
+        font-size: 1.1rem; 
     }
 
-    
+    .productos-perspective-container {
+        perspective: 600px;
+        margin-bottom: -1rem;
+        padding: 0;
+    }
+
+    .productos-gallery {
+        flex-direction: row; 
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+    }
+
+    /* Ocultamos completamente las imágenes exteriores (1 y 5) */
+    .outer-left, .outer-right {
+        display: none !important;
+    }
+
+    /* Ajuste de las 3 imágenes centrales (2, 3 y 4) */
+    .producto-img {
+        max-height: 280px; 
+        margin: 0 -0.8rem; 
+    }
+
+    /* Aseguramos que las imágenes de los lados no tapen a la central */
+    .inner-left {
+        transform: rotateY(-10deg) scale(0.88);
+        z-index: 1;
+    }
+
+    .center-main {
+        transform: rotateY(0deg) scale(1.05);
+        z-index: 3; 
+    }
+
+    .inner-right {
+        transform: rotateY(10deg) scale(0.88);
+        z-index: 1;
+    }
+
+    .renta-title {
+        font-size: 1.4rem;
+        max-width: 260px;
+        margin: 0 auto 2rem auto;
+        line-height: 1.3;
+    }
+} /* <- Esta llave cierra la vista de celular de 768px */
+
+
+@media (max-width: 480px) {
+    .producto-img {
+        max-height: 230px; 
+        margin: 0 -0.4rem;  
+    }
+}
+
+/* --- Animaciones --- */
+.animate-fade-in {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.animate-fade-in.visible {
+    opacity: 1;
+}
+
+.delay-img-1 { transition-delay: 0.1s; }
+.delay-img-2 { transition-delay: 0.4s; }
+.delay-img-3 { transition-delay: 0.7s; }
+
+.animate-fade-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Animaciones --- */
+.animate-fade-in {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.animate-fade-in.visible {
+    opacity: 1;
+}
+
+.delay-img-1 { transition-delay: 0.1s; }
+.delay-img-2 { transition-delay: 0.4s; }
+.delay-img-3 { transition-delay: 0.7s; }
+
+.animate-fade-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
