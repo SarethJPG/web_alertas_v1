@@ -1334,3 +1334,168 @@ body {
         font-size: 1.2rem;
     }
 }
+
+/* ==========================================
+   SECCIÓN 7: CONTACTO SECO / EMERGENCIAS
+   ========================================== */
+
+/* --- Diseño Base (Escritorio) --- */
+.contacto-seco-section {
+    position: relative;
+    width: 100%;
+    /* Altura mínima y propiedades del fondo para que se recorte como los demás banners */
+    min-height: 85vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center; /* Centra todo verticalmente */
+    justify-content: center;
+    padding: 6rem 0; /* Ligera separación superior e inferior */
+    background-color: #1a1a1a; /* Color de respaldo si la imagen tarda en cargar */
+}
+
+.contacto-seco-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1760px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Título de la sección */
+.contacto-seco-title {
+    color: #ffffff;
+    font-size: 2.4rem;
+    font-weight: 700; /* Bold */
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 5.5rem;
+    line-height: 1.3;
+    width: 100%;
+}
+
+/* --- LA TABLA / MATRIZ 3x2 --- */
+.contacto-seco-grid {
+    display: grid;
+    /* 3 columnas del mismo tamaño */
+    grid-template-columns: repeat(3, 1fr);
+    /* Mayor distancia horizontal entre columnas */
+    column-gap: 8rem; 
+    /* Menor distancia vertical entre las 2 filas, pero lo suficiente para no encimarse */
+    row-gap: 4.5rem;    
+    width: 100%;
+    max-width: 1400px; /* Ancho máximo para que las orillas guarden distancia lateral */
+    margin-bottom: 5.5rem;
+}
+
+/* Cada uno de los 6 elementos */
+.contacto-seco-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.contacto-seco-icon-wrapper {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.8rem;
+}
+
+/* --- Íconos e Inversión a Blanco --- */
+.contacto-seco-icon {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    /* EFECTO NEGATIVO: Invierte el color negro original del SVG a blanco puro */
+    filter: brightness(0) invert(1); 
+    transition: transform 0.3s ease;
+}
+
+/* Agrandamos un poco más las 4 imágenes especificadas */
+.contacto-seco-icon[src*="electro"],
+.contacto-seco-icon[src*="chapas"],
+.contacto-seco-icon[src*="torniquetes"],
+.contacto-seco-icon[src*="tableros"] {
+    transform: scale(1.20); /* Incrementa un 18% su tamaño relativo */
+}
+
+.contacto-seco-label {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.4;
+    /* Al tener espacio suficiente en monitor, naturalmente se queda en 1 línea */
+}
+
+/* Botón final */
+.contacto-seco-btn-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+
+}
+
+/* Modificación exclusiva para el botón de esta sección */
+.contacto-seco-btn-container .btn-primary {
+    /* Cambiamos el peso de la letra solo aquí. 
+       500 = medio, 600 = semi-bold (por defecto tenía bold/700) */
+    font-weight: 600;
+    font-size: 1.4rem; 
+}
+
+
+/* --- Responsivo --- */
+@media (max-width: 1200px) {
+    /* Laptops: reducimos distancias y permitimos que el texto brinque de línea seguro */
+    .contacto-seco-grid {
+        column-gap: 3rem; /* Reducción proporcional de distancia horizontal */
+        row-gap: 5rem;    /* Aumentamos un pelín la vertical por si los textos se hacen de 3 líneas */
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contacto-seco-section {
+        padding: 5rem 0;
+        min-height: auto; /* Dejamos que el contenido decida la altura */
+    }
+
+    .contacto-seco-title {
+        font-size: 1.6rem;
+        margin-bottom: 4rem;
+    }
+
+    /* ¡MAGIA MÓVIL! Pasamos la tabla a 2 columnas x 3 filas */
+    .contacto-seco-grid {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+        row-gap: 4rem;
+    }
+
+    .contacto-seco-icon-wrapper {
+        height: 65px;
+        margin-bottom: 1.2rem;
+    }
+
+    .contacto-seco-label {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Si el celular es SÚPER estrecho, pasamos todo a 1 sola columna vertical (1x6) */
+    .contacto-seco-grid {
+        grid-template-columns: 1fr;
+        row-gap: 3.5rem;
+    }
+}
